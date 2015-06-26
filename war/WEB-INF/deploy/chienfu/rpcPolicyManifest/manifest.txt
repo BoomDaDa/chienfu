@@ -1,0 +1,3 @@
+# Module chienfu
+# RPC service class, partial path of RPC policy file
+com.web.client.GreetingService, 94A4024FCB81C288532A2C809D99617F.gwt.rpc

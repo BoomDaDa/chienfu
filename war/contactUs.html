@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>千釜事業有限公司</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="千釜,氣泡布,氣泡袋,epe,舒美布,舒服多,特固龍,eva,泡泡粒,發泡管,專營保利龍" />
+		<meta name="keywords" content="千釜,千釜事業有限公司,氣泡布,氣泡袋,epe,舒美布,舒服多,特固龍,eva,泡泡粒,發泡管,加工,規格,PE,創新,自創,雨新,保利龍,舒美布,準確,展業,工成,貼合" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script type="text/javascript">
+		function validateEmail(email) {
+			reg = /^[^\s]+@[^\s]+\.[^\s]{2,3}$/;
+		  	if (reg.test(email)) {
+		    		return true;
+		  	}else{
+		  		return false;
+		  	}
+		}
+		function submit() {
+			if (document.getElementById('name').value == ''){
+				alert("請輸入姓名!");
+			}else if (!validateEmail(document.getElementById('mail').value)){
+				alert("E-Mail格式錯誤!");
+			}else if (document.getElementById('tel').value == ''){
+				alert("請輸入電話!");
+			}else if (document.getElementById('message').value == ''){
+				alert("請輸入留言!");
+			}else{
+				$.ajax({
+				    url: '/mailHandlerServlet',
+				    type: 'POST',
+				    data: {
+				    		name: $('#name').val(),
+				    		mail: $('#mail').val(),
+				    		tel: $('#tel').val(),
+				    		message: $('#message').val(),
+				    },
+				    error: function(xhr) {
+				    		alert('留言發生錯誤,請撥打電話聯絡!');
+				    },
+				    success: function(response) {
+				    		document.getElementById('contact-form').reset();
+				        alert(response);
+				    }
+				});
+			}
+		}
+		
+		</script>
+		<link rel="stylesheet" href="css/skel.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style-desktop.css" />
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	
+	<body class="homepage">
+
+		<!-- Header -->
+			<div id="header-wrapper">
+				<header id="header" class="container">
+				
+					<!-- Logo -->
+						<div id="logo">
+							<h1><a href="index.html">千釜</a></h1>
+							<span>千釜事業有限公司</span>
+						</div>
+					
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">首頁</a></li>
+								<li><a href="goods.html">產品介紹</a></li>
+								<li><a href="aboutUs.html">關於千釜</a></li>
+								<li class="current"><a href="contactUs.html">聯絡我們</a></li>
+							</ul>
+						</nav>
+					
+				</header>
+			</div>
+		
+			<div id="main-wrapper">
+				<div class="container">
+									
+					<iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3642.137761587651!2d120.63372353309626!3d24.096650379571706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x34693c0e50fb8fd5%3A0xa3f658dfbb88a8d7!2zNDE05Y-w54Gj5Y-w5Lit5biC54OP5pel5Y2A5LqU5YWJ6LevNjA35be3MjHomZ8!3m2!1d24.096645499999997!2d120.6360356!5e0!3m2!1szh-TW!2sus!4v1425283853550" width="100%" height="200" frameborder="0" style="border:0"></iframe>
+					<div class="row">
+						<div class="5u skel-cell-important">
+								<div id="content">
+									<section class="last">
+										<h3>聯絡千釜</h3>
+										<p>台中市烏日區五光路607巷21號</p>
+										<p>汽車:<br>
+											自行開車=台中市烏日區五光路607巷21號 <br>
+											其他:<br>
+											◎二高台中烏日交流道約5分鐘到達<br>
+											◎中彰快速道路烏日交流道約5分鐘到達<br>
+										</p>
+										<p>TEL : +886 4 2336 6118</p>
+										<p>FAX : +886 4 2336 2126</p>
+										<p>EMAIL : <a href="mailto:chienfu76@hotmail.com">chienfu76@hotmail.com</a></p>
+									</section>
+								</div>
+						</div>
+						<div class="7u skel-cell-important">
+						<h3>意見回饋</h3>
+						<form action="/mailHandlerServlet" method="post" id="contact-form">
+								<fieldset>
+									  <label><span class="text-form">姓名:</span><input id="name" name="name" type="text" /></label>
+									  <label><span class="text-form">電子信箱:</span><input id="mail" name="mail" type="text" /></label>							  
+									  <label><span class="text-form">電話:</span><input id="tel" name="tel" type="text" /></label>							  
+									  <div class="wrapper">
+										<label><span class="text-form">留言:</span></label>
+										<div class="extra-wrap" >
+											<textarea id="message" name="message"></textarea>
+											<div class="clear"></div>
+											<div class="buttons">
+												<a href="#" onClick="document.getElementById('contact-form').reset()">清除</a>
+												<a href="#" onClick="submit()">送出</a>
+											</div> 
+										</div>
+									  </div>							
+								</fieldset>						
+						</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+		<!-- Footer -->
+		<div id="footer-wrapper">
+			<div class="row">
+				<div class="12u">
+					<div id="copyright">
+						<ul class="menu">
+							<li>&copy; CHIEN FU ENTERPRISE CO.LID. All rights reserved.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</body>
+</html>
