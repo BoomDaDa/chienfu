@@ -49,7 +49,7 @@ public class MailHandlerServlet extends HttpServlet {
 					"留言："+req.getParameter("message");
 
         try {
-        		PrintWriter out = new PrintWriter(new OutputStreamWriter(resp.getOutputStream(), "UTF8"), true);
+        		PrintWriter out = new PrintWriter(new OutputStreamWriter(resp.getOutputStream(), "UTF-8"), true);
 
         		if (!req.getParameter("name").equals("")){
 	            Message msg = new MimeMessage(session);
@@ -61,9 +61,9 @@ public class MailHandlerServlet extends HttpServlet {
 	
 	            msg.setText(msgBody);
 	            Transport.send(msg);
-	            out.print("感謝您的留言"); 
+	            out.print("success"); 
         		}else {
-        		    out.print("留言發生錯誤,請撥打電話聯絡!'}");  
+        		    out.print("error");  
         		}
         		out.flush();
         } catch (AddressException e) {

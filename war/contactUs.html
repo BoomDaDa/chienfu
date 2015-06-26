@@ -20,14 +20,14 @@
 		  		return false;
 		  	}
 		}
-		function submit() {
-			if (document.getElementById('name').value == ''){
+		function sendEmail() {
+			if ($('#name').val() == ''){
 				alert("請輸入姓名!");
-			}else if (!validateEmail(document.getElementById('mail').value)){
+			}else if (!validateEmail($('#mail').val())){
 				alert("E-Mail格式錯誤!");
-			}else if (document.getElementById('tel').value == ''){
+			}else if ($('#tel').val() == ''){
 				alert("請輸入電話!");
-			}else if (document.getElementById('message').value == ''){
+			}else if ($('#message').val() == ''){
 				alert("請輸入留言!");
 			}else{
 				$.ajax({
@@ -43,8 +43,12 @@
 				    		alert('留言發生錯誤,請撥打電話聯絡!');
 				    },
 				    success: function(response) {
-				    		document.getElementById('contact-form').reset();
-				        alert(response);
+				    		$('#contact-form')[0].reset();
+				    		if (response == 'success'){
+				        		alert('感謝您的留言');
+				        	}else{
+				        		alert('留言發生錯誤,請撥打電話聯絡!');
+				        	}
 				    }
 				});
 			}
@@ -119,7 +123,7 @@
 											<div class="clear"></div>
 											<div class="buttons">
 												<a href="#" onClick="document.getElementById('contact-form').reset()">清除</a>
-												<a href="#" onClick="submit()">送出</a>
+												<a href="#" onClick="sendEmail()">送出</a>
 											</div> 
 										</div>
 									  </div>							
